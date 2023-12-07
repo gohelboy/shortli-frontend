@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 
 const RedirectPage = () => {
 
-    const base_api_url = 'http://localhost:5000'
-    //const base_api_url = 'https://shortli-server.onrender.com'
+    //const base_api_url = 'http://localhost:5000'
+    const base_api_url = 'https://shortli-server.onrender.com'
 
     const redirect = async () => {
         const link = window.location.href.split('/').pop();
