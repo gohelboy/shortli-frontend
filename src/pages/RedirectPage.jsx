@@ -2,12 +2,20 @@ import { useEffect } from 'react'
 
 const RedirectPage = () => {
 
-    //const base_api_url = 'http://localhost:5000'
-    const base_api_url = 'https://shortli-server.onrender.com'
+    const base_api_url = 'http://localhost:5000'
+    //const base_api_url = 'https://shortli-server.onrender.com'
 
     const redirect = async () => {
         const link = window.location.href.split('/').pop();
-        if (link) await fetch(`${base_api_url}/${link}`);
+        if (link) {
+            const respone = await fetch(`${base_api_url}/${link}`);
+            const data = await respone.json();
+            if (data.originalUrl) {
+                window.location.href = data.originalUrl;
+            } else {
+                alert(data)
+            }
+        }
     }
 
     useEffect(() => {

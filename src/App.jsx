@@ -8,8 +8,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route index path='/' element={<Home />} />
-          <Route path='/:id' element={<RedirectPage />} />
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/:id' element={<RedirectPage />} />
         </Routes>
       </BrowserRouter>
     </>

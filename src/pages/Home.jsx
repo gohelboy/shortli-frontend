@@ -67,6 +67,12 @@ const Home = () => {
         }
     }
 
+    const copy = async (link) => {
+        if (!link) return;
+        await navigator.clipboard.writeText(link)
+        alert(`${link} copied to clipboard`)
+    }
+
     useEffect(() => {
         getUrls(currentPage, limit);
     }, [])
@@ -93,7 +99,7 @@ const Home = () => {
                 {shortLinks.length > 0 && <div className='links-container'>
                     {shortLinks.map((link, key) => <div key={key} className='link'>
                         <span>{convertTimestampToDateTimeFormat(link.createdAt)}</span>
-                        <a href={`${base_api_url}/${link.shortUrl}`} target='_blank' rel="noreferrer">{base_api_url}/{link.shortUrl}</a>
+                        <button onClick={() => copy(`shortli.netlify.app/${link.shortUrl}`)} >shortli.netlify.app/{link.shortUrl}</button>
                     </div>)}
                 </div>}
             </div>
